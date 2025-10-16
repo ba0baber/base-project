@@ -19,6 +19,7 @@
             </button>
         </div>
     </header>
+
     <nav class="nav">
         <ul class="nav__list">
             <li class="nav__item nav__item--active">
@@ -37,96 +38,148 @@
     </nav>
 
     <main class="main">
+
         <section class="hero">
             <div class="hero__content">
                 <div class="hero__text">
                     <h2 class="hero__title">Привет! Я студентка</h2>
-                    <p class="hero__subtitle">Группа ЭФБО-07-24<br>Увлекаюсь веб-разработкой</p>
+                    <p class="hero__subtitle">Группа ЭФБО-07-24<br>Увлекаюсь веб-разработкой и программированием</p>
                     <a href="assets/resume.pdf" class="download-button" download>
-                        Скачать резюме
+                        📄 Скачать резюме
                     </a>
                 </div>
                 <div class="hero__image">
-                    <img src="images/photo.jpg" alt="Фото Варвары" class="hero__photo" onerror="this.src='https://via.placeholder.com/200x200/3498db/ffffff?text=Варвара+Есина'">
+                    <img src="images/photo.jpg" alt="Фото Варвары" class="hero__photo" onerror="this.src='https://via.placeholder.com/250x250/9370DB/ffffff?text=Варвара+Есина'">
                 </div>
             </div>
         </section>
-
         <section class="skills">
             <h2 class="skills__title">Мои навыки</h2>
             <div class="skills__container">
-                <div class="skill-item">
+
+                <div class="skill-item skill-html">
                     <div class="skill-header">
-                        <span class="skill-name">HTML/CSS</span>
+                        <span class="skill-name">
+                            <span class="skill-icon">🎨</span>
+                            HTML/CSS
+                        </span>
                         <span class="skill-percent">50%</span>
                     </div>
                     <div class="skill-bar">
-                        <div class="skill-progress" style="width: 90%"></div>
+                        <div class="skill-progress" style="width: 50%"></div>
                     </div>
                 </div>
-                
-                <div class="skill-item">
+
+                <div class="skill-item skill-js">
                     <div class="skill-header">
-                        <span class="skill-name">JavaScript</span>
+                        <span class="skill-name">
+                            <span class="skill-icon">⚡</span>
+                            JavaScript
+                        </span>
                         <span class="skill-percent">70%</span>
                     </div>
                     <div class="skill-bar">
-                        <div class="skill-progress" style="width: 80%"></div>
+                        <div class="skill-progress" style="width: 70%"></div>
                     </div>
                 </div>
-                
-                <div class="skill-item">
+  
+                <div class="skill-item skill-bootstrap">
                     <div class="skill-header">
-                        <span class="skill-name">Bootstrap</span>
+                        <span class="skill-name">
+                            <span class="skill-icon">🎯</span>
+                            Bootstrap
+                        </span>
                         <span class="skill-percent">85%</span>
                     </div>
                     <div class="skill-bar">
                         <div class="skill-progress" style="width: 85%"></div>
                     </div>
                 </div>
-                
-                <div class="skill-item">
+    
+                <div class="skill-item skill-react">
                     <div class="skill-header">
-                        <span class="skill-name">React</span>
+                        <span class="skill-name">
+                            <span class="skill-icon">⚛️</span>
+                            React
+                        </span>
                         <span class="skill-percent">10%</span>
+                    </div>
+                    <div class="skill-bar">
+                        <div class="skill-progress" style="width: 10%"></div>
+                    </div>
+                </div>
+    
+                <div class="skill-item skill-python">
+                    <div class="skill-header">
+                        <span class="skill-name">
+                            <span class="skill-icon">🐍</span>
+                            Python
+                        </span>
+                        <span class="skill-percent">90%</span>
                     </div>
                     <div class="skill-bar">
                         <div class="skill-progress" style="width: 60%"></div>
                     </div>
                 </div>
+           
+                <div class="skill-item skill-cpp">
+                    <div class="skill-header">
+                        <span class="skill-name">
+                            <span class="skill-icon">🔧</span>
+                            C++
+                        </span>
+                        <span class="skill-percent">40%</span>
+                    </div>
+                    <div class="skill-bar">
+                        <div class="skill-progress" style="width: 40%"></div>
+                    </div>
+                </div>
+
+                <div class="skill-item skill-csharp">
+                    <div class="skill-header">
+                        <span class="skill-name">
+                            <span class="skill-icon">💠</span>
+                            C#
+                        </span>
+                        <span class="skill-percent">30%</span>
+                    </div>
+                    <div class="skill-bar">
+                        <div class="skill-progress" style="width: 30%"></div>
+                    </div>
+                </div>
             </div>
         </section>
-
         <section class="projects">
             <h2 class="projects__title">Лучшие проекты</h2>
             <div class="projects__grid">
                 <div class="project-card" onclick="location.href='pages/projects.html'">
-                    <h3 class="project-card__title">Личный сайт</h3>
-                    <p class="project-card__tech">HTML, CSS</p>
-                    <p>Сайт-портфолио с адаптивным дизайном</p>
+                    <h3 class="project-card__title">Личный сайт-портфолио</h3>
+                    <p class="project-card__tech">HTML, CSS, JavaScript</p>
+                    <p>Адаптивный сайт с современным дизайном и анимациями</p>
                 </div>
                 
                 <div class="project-card" onclick="location.href='pages/projects.html'">
-                    <h3 class="project-card__title">Приложение</h3>
-                    <p class="project-card__tech">JavaScript</p>
-                    <p>Приложение для управления задачами</p>
+                    <h3 class="project-card__title">Todo-приложение</h3>
+                    <p class="project-card__tech">JavaScript, LocalStorage</p>
+                    <p>Приложение для управления задачами с красивым интерфейсом</p>
                 </div>
+                
                 <div class="project-card" onclick="location.href='pages/projects.html'">
-                    <h3 class="project-card__title">Интернет-магазин</h3>
-                    <p class="project-card__tech">React</p>
-                    <p>Прототип интернет-магазина с корзиной</p>
+                    <h3 class="project-card__title">Игра "Память"</h3>
+                    <p class="project-card__tech">JavaScript, CSS анимации</p>
+                    <p>Классическая карточная игра с системой очков и таймером</p>
                 </div>
             </div>
         </section>
 
     </main>
-
     <footer class="footer">
         <div class="footer__content">
             &copy; 2025 Есина Варвара Дмитриевна. Все права защищены.
         </div>
     </footer>
 </div>
+
 <script src="scripts/script.js"></script>
 </body>
 </html>
