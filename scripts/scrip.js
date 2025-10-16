@@ -10,6 +10,13 @@ class ThemeManager {
             this.themeToggle.addEventListener('click', () => this.toggleTheme());
         }
         this.animateSkills();
+        const contactForm = document.getElementById('contactForm');
+        if (contactForm) {
+            contactForm.addEventListener('submit', (e) => {
+                e.preventDefault();
+                validateForm(contactForm);
+            });
+        }
     } 
     toggleTheme() {
         const currentTheme = document.body.getAttribute('data-theme') || 'light';
@@ -39,6 +46,7 @@ class ThemeManager {
         });
     }
 }
+
 document.addEventListener('DOMContentLoaded', function() {
     new ThemeManager();
    
@@ -47,6 +55,7 @@ document.addEventListener('DOMContentLoaded', function() {
         element.style.animationDelay = `${index * 0.1}s`;
     });
 });
+
 function validateForm(form) {
     const name = form.querySelector('input[name="name"]');
     const email = form.querySelector('input[name="email"]');
