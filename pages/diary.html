@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Дневник - Есина Варвара</title>
+    <link rel="stylesheet" href="../style/styles.css">
+</head>
+<body data-theme="light">
+<div class="page">
+
+    <header class="header">
+        <div class="header__content">
+            <h1 class="header__title">Есина Варвара Дмитриевна</h1>
+            <p class="header__subtitle">Учебный дневник</p>
+            <button class="theme-toggle" id="themeToggle">
+                <span class="theme-toggle__icon">🌙</span>
+                <span class="theme-toggle__text">Тёмная тема</span>
+            </button>
+        </div>
+    </header>
+
+    <nav class="nav">
+        <ul class="nav__list">
+            <li class="nav__item">
+                <a class="nav__link" href="../index.html">Главная</a>
+            </li>
+            <li class="nav__item">
+                <a class="nav__link" href="projects.html">Проекты</a>
+            </li>
+            <li class="nav__item nav__item--active">
+                <a class="nav__link" href="diary.html">Дневник</a>
+            </li>
+            <li class="nav__item">
+                <a class="nav__link" href="contacts.html">Контакты</a>
+            </li>
+        </ul>
+    </nav>
+
+    <main class="main">
+        <h1 class="page-title">Мой учебный прогресс</h1>
+        
+        <div class="diary-content">
+            <div class="diary-entries">
+                <h2 class="diary-section-title">Последние записи</h2>
+                <div class="entries-list">
+                    <div class="entry-item entry-item--completed">
+                        <span class="entry-date">15 дек</span>
+                        <span class="entry-text">Верстка макета сайта</span>
+                        <span class="entry-status">✓</span>
+                    </div>
+                    
+                    <div class="entry-item entry-item--completed">
+                        <span class="entry-date">10 дек</span>
+                        <span class="entry-text">JavaScript основы</span>
+                        <span class="entry-status">✓</span>
+                    </div>
+                    
+                    <div class="entry-item entry-item--progress">
+                        <span class="entry-date">05 дек</span>
+                        <span class="entry-text">Работа с формами</span>
+                        <span class="entry-status">⟳</span>
+                    </div>
+                    
+                    <div class="entry-item entry-item--progress">
+                        <span class="entry-date">01 дек</span>
+                        <span class="entry-text">Адаптивный дизайн</span>
+                        <span class="entry-status">⟳</span>
+                    </div>
+                    
+                    <div class="entry-item">
+                        <span class="entry-date">25 ноя</span>
+                        <span class="entry-text">Основы React</span>
+                        <span class="entry-status">○</span>
+                    </div>
+                </div>
+                
+                <button class="add-entry-button">Добавить запись</button>
+            </div>
+            
+            <div class="current-courses">
+                <h2 class="diary-section-title">Текущие курсы</h2>
+                <div class="courses-list">
+                    <div class="course-item">
+                        <div class="course-header">
+                            <span class="course-name">Веб-разработка</span>
+                            <span class="course-percent">90%</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-progress" style="width: 90%"></div>
+                        </div>
+                    </div>
+                    
+                    <div class="course-item">
+                        <div class="course-header">
+                            <span class="course-name">JavaScript</span>
+                            <span class="course-percent">70%</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-progress" style="width: 70%"></div>
+                        </div>
+                    </div>
+                    
+                    <div class="course-item">
+                        <div class="course-header">
+                            <span class="course-name">React</span>
+                            <span class="course-percent">50%</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-progress" style="width: 50%"></div>
+                        </div>
+                    </div>
+                    
+                    <div class="course-item">
+                        <div class="course-header">
+                            <span class="course-name">Базы данных</span>
+                            <span class="course-percent">30%</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-progress" style="width: 30%"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+    <footer class="footer">
+        <div class="footer__content">
+            &copy; 2025 Есина Варвара Дмитриевна. Все права защищены.
+        </div>
+    </footer>
+</div>
+
+<script src="../scripts/script.js"></script>
+</body>
+</html>

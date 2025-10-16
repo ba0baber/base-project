@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Проекты - Есина Варвара</title>
+    <link rel="stylesheet" href="../style/styles.css">
+</head>
+<body data-theme="light">
+<div class="page">
+
+    <header class="header">
+        <div class="header__content">
+            <h1 class="header__title">Есина Варвара Дмитриевна</h1>
+            <p class="header__subtitle">Мои проекты</p>
+            <button class="theme-toggle" id="themeToggle">
+                <span class="theme-toggle__icon">🌙</span>
+                <span class="theme-toggle__text">Тёмная тема</span>
+            </button>
+        </div>
+    </header>
+    <nav class="nav">
+        <ul class="nav__list">
+            <li class="nav__item">
+                <a class="nav__link" href="../index.html">Главная</a>
+            </li>
+            <li class="nav__item nav__item--active">
+                <a class="nav__link" href="projects.html">Проекты</a>
+            </li>
+            <li class="nav__item">
+                <a class="nav__link" href="diary.html">Дневник</a>
+            </li>
+            <li class="nav__item">
+                <a class="nav__link" href="contacts.html">Контакты</a>
+            </li>
+        </ul>
+    </nav>
+
+    <main class="main">
+        <h1 class="page-title">Мои проекты</h1>
+        <div class="projects-filter">
+            <button class="filter-button filter-button--active">Все</button>
+            <button class="filter-button">HTML</button>
+            <button class="filter-button">JavaScript</button>
+            <button class="filter-button">React</button>
+        </div>
+        <div class="projects__grid">
+            <div class="project-card">
+                <h3 class="project-card__title">Личный сайт</h3>
+                <p class="project-card__tech">HTML, CSS</p>
+                <p>Сайт-портфолио с адаптивным дизайном и современным интерфейсом</p>
+            </div>
+            <div class="project-card">
+                <h3 class="project-card__title">Todo-приложение</h3>
+                <p class="project-card__tech">JavaScript</p>
+                <p>Приложение для управления задачами с использованием LocalStorage</p>
+            </div> 
+            <div class="project-card">
+                <h3 class="project-card__title">Интернет-магазин</h3>
+                <p class="project-card__tech">React</p>
+                <p>Прототип интернет-магазина с корзиной товаров и фильтрацией</p>
+            </div> 
+            <div class="project-card">
+                <h3 class="project-card__title">Портфолио</h3>
+                <p class="project-card__tech">Bootstrap</p>
+                <p>Адаптивное портфолио с использованием фреймворка Bootstrap</p>
+            </div>
+            <div class="project-card">
+                <h3 class="project-card__title">Игра "Память"</h3>
+                <p class="project-card__tech">JavaScript</p>
+                <p>Классическая игра на развитие памяти с системой очков</p>
+            </div>
+            <div class="project-card">
+                <h3 class="project-card__title">Погодное приложение</h3>
+                <p class="project-card__tech">React, API</p>
+                <p>Приложение для просмотра погоды с использованием внешнего API</p>
+            </div>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <div class="footer__content">
+            &copy; 2025 Есина Варвара Дмитриевна. Все права защищены.
+        </div>
+    </footer>
+</div>
+<script src="../scripts/script.js"></script>
+</body>
+</html>

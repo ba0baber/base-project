@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Контакты - Есина Варвара</title>
+    <link rel="stylesheet" href="../style/styles.css">
+</head>
+<body data-theme="light">
+<div class="page">
+
+    <header class="header">
+        <div class="header__content">
+            <h1 class="header__title">Есина Варвара Дмитриевна</h1>
+            <p class="header__subtitle">Контакты</p>
+            <button class="theme-toggle" id="themeToggle">
+                <span class="theme-toggle__icon">🌙</span>
+                <span class="theme-toggle__text">Тёмная тема</span>
+            </button>
+        </div>
+    </header>
+
+    <nav class="nav">
+        <ul class="nav__list">
+            <li class="nav__item">
+                <a class="nav__link" href="../index.html">Главная</a>
+            </li>
+            <li class="nav__item">
+                <a class="nav__link" href="projects.html">Проекты</a>
+            </li>
+            <li class="nav__item">
+                <a class="nav__link" href="diary.html">Дневник</a>
+            </li>
+            <li class="nav__item nav__item--active">
+                <a class="nav__link" href="contacts.html">Контакты</a>
+            </li>
+        </ul>
+    </nav>
+    <main class="main">
+        <h1 class="page-title">Свяжитесь со мной</h1>
+        
+        <div class="contacts-content">
+            <div class="contact-form">
+                <form id="contactForm">
+                    <div class="form-group">
+                        <label for="name">Имя:</label>
+                        <input type="text" id="name" name="name" required placeholder="Введите ваше имя">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="email">Email:</label>
+                        <input type="email" id="email" name="email" required placeholder="Введите ваш email">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="message">Сообщение:</label>
+                        <textarea id="message" name="message" required placeholder="Введите ваше сообщение" rows="5"></textarea>
+                    </div>
+                    
+                    <button type="submit" class="submit-button">Отправить сообщение</button>
+                </form>
+            </div>
+            
+            <div class="contact-info">
+                <h3 class="contact-info-title">Контакты:</h3>
+                <div class="contact-details">
+                    <div class="contact-item">
+                        <span class="contact-icon">📧</span>
+                        <span class="contact-text">esina.varvara@edu.ru</span>
+                    </div>
+                    
+                    <div class="contact-item">
+                        <span class="contact-icon">💻</span>
+                        <span class="contact-text">GitHub: varvara-esina</span>
+                    </div>
+                    
+                    <div class="contact-item">
+                        <span class="contact-icon">🏠</span>
+                        <span class="contact-text">Москва, Россия</span>
+                    </div>
+                    
+                    <div class="contact-item">
+                        <span class="contact-icon">📱</span>
+                        <span class="contact-text">+7 (XXX) XXX-XX-XX</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+    <footer class="footer">
+        <div class="footer__content">
+            &copy; 2025 Есина Варвара Дмитриевна. Все права защищены.
+        </div>
+    </footer>
+</div>
+
+<script src="../scripts/script.js"></script>
+</body>
+</html>
