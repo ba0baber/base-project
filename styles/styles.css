@@ -882,3 +882,80 @@ body {
         flex-direction: column;
     }
 }
+.diary-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.7);
+    display: none;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    animation: fadeIn 0.3s ease;
+}
+
+.diary-modal .modal-content {
+    background: var(--white);
+    padding: var(--space-xl);
+    border-radius: var(--radius-lg);
+    max-width: 500px;
+    width: 90%;
+    max-height: 80vh;
+    overflow-y: auto;
+    position: relative;
+    animation: slideUp 0.3s ease;
+}
+
+.diary-modal .close-modal {
+    position: absolute;
+    top: var(--space-md);
+    right: var(--space-md);
+    font-size: 1.5rem;
+    cursor: pointer;
+    background: none;
+    border: none;
+    color: var(--gray);
+    transition: var(--transition);
+}
+
+.diary-modal .close-modal:hover {
+    color: var(--primary);
+}
+
+.form-buttons {
+    display: flex;
+    gap: var(--space-md);
+    margin-top: var(--space-lg);
+}
+
+.cancel-button {
+    background: linear-gradient(45deg, var(--gray), var(--gray-light));
+    color: var(--white);
+    border: none;
+    padding: var(--space-md) var(--space-lg);
+    border-radius: var(--radius);
+    cursor: pointer;
+    font-weight: 600;
+    transition: var(--transition);
+    width: 100%;
+    box-shadow: var(--shadow);
+}
+
+.cancel-button:hover {
+    background: linear-gradient(45deg, var(--gray-light), var(--gray));
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-lg);
+}
+
+@media (max-width: 768px) {
+    .diary-modal .modal-content {
+        padding: var(--space-lg);
+        margin: var(--space-md);
+    }
+    
+    .form-buttons {
+        flex-direction: column;
+    }
+}

@@ -75,7 +75,7 @@
                     </div>
                 </div>
                 
-                <button class="add-entry-button">Добавить запись</button>
+                <button class="add-entry-button" id="addEntryButton">Добавить запись</button>
             </div>
             
             <div class="current-courses">
@@ -132,6 +132,147 @@
     </footer>
 </div>
 
-<script src="../scrip.js"></script>
+<div id="diaryModal" class="diary-modal" style="display: none;">
+    <div class="modal-content">
+        <span class="close-modal" id="closeModal">&times;</span>
+        <h3>Добавить запись в дневник</h3>
+        <form id="addEntryForm">
+            <div class="form-group">
+                <label for="entryDate">📅 Дата:</label>
+                <input type="date" id="entryDate" name="entryDate" required>
+            </div>
+            
+            <div class="form-group">
+                <label for="entryText">📝 Что вы изучили:</label>
+                <textarea id="entryText" name="entryText" required placeholder="Опишите, что вы изучили сегодня..." rows="4"></textarea>
+            </div>
+            
+            <div class="form-group">
+                <label for="entryStatus">🎯 Статус выполнения:</label>
+                <select id="entryStatus" name="entryStatus">
+                    <option value="completed">✅ Завершено</option>
+                    <option value="progress">🔄 В процессе</option>
+                    <option value="planned">⏳ Запланировано</option>
+                </select>
+            </div>
+            
+            <div class="form-buttons">
+                <button type="submit" class="submit-button">💾 Сохранить запись</button>
+                <button type="button" class="cancel-button" id="cancelButton">❌ Отмена</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const addEntryButton = document.getElementById('addEntryButton');
+    const diaryModal = document.getElementById('diaryModal');
+    const closeModal = document.getElementById('closeModal');
+    const cancelButton = document.getElementById('cancelButton');
+    const addEntryForm = document.getElementById('addEntryForm');
+    const entryDate = document.getElementById('entryDate');
+    
+    const today = new Date().toISOString().split('T')[0];
+    entryDate.value = today;
+    
+    addEntryButton.addEventListener('click', function() {
+        diaryModal.style.display = 'flex';
+        addEntryForm.reset();
+        entryDate.value = today;
+    });
+    
+    closeModal.addEventListener('click', function() {
+        diaryModal.style.display = 'none';
+    });
+    
+    cancelButton.addEventListener('click', function() {
+        diaryModal.style.display = 'none';
+        addEntryForm.reset();
+        entryDate.value = today;
+    });
+    
+    window.addEventListener('click', function(event) {
+        if (event.target === diaryModal) {
+            diaryModal.style.display = 'none';
+            addEntryForm.reset();
+            entryDate.value = today;
+        }
+    });
+    
+    addEntryForm.addEventListener('submit', function(e) {
+        e.preventDefault();
+        
+        const date = entryDate.value;
+        const text = document.getElementById('entryText').value;
+        const status = document.getElementById('entryStatus').value;
+        
+        if (!date || !text.trim()) {
+            alert('Пожалуйста, заполните все поля!');
+            return;
+        }
+        
+        const formattedDate = new Date(date).toLocaleDateString('ru-RU', {
+            day: 'numeric',
+            month: 'long'
+        });
+        
+        const statusIcons = {
+            completed: '✓',
+            progress: '⟳',
+            planned: '○'
+        };
+        
+        const statusIcon = statusIcons[status] || '○';
+        const statusClass = status === 'completed' ? 'entry-item--completed' : 
+                           status === 'progress' ? 'entry-item--progress' : '';
+        
+        const entriesList = document.querySelector('.entries-list');
+        const newEntry = document.createElement('div');
+        newEntry.className = `entry-item ${statusClass}`;
+        newEntry.innerHTML = `
+            <span class="entry-date">${formattedDate}</span>
+            <span class="entry-text">${text}</span>
+            <span class="entry-status">${statusIcon}</span>
+        `;
+        
+        entriesList.insertBefore(newEntry, entriesList.firstChild);
+        
+        diaryModal.style.display = 'none';
+        
+        alert('✅ Запись успешно добавлена в дневник!');
+        
+        addEntryForm.reset();
+        entryDate.value = today;
+    });
+    
+    const themeToggle = document.getElementById('themeToggle');
+    if (themeToggle) {
+        const savedTheme = localStorage.getItem('theme') || 'light';
+        document.body.setAttribute('data-theme', savedTheme);
+        updateThemeToggle(savedTheme);
+        
+        themeToggle.addEventListener('click', function() {
+            const currentTheme = document.body.getAttribute('data-theme');
+            const newTheme = currentTheme === 'light' ? 'dark' : 'light';
+            document.body.setAttribute('data-theme', newTheme);
+            localStorage.setItem('theme', newTheme);
+            updateThemeToggle(newTheme);
+        });
+        
+        function updateThemeToggle(theme) {
+            const icon = themeToggle.querySelector('.theme-toggle-icon');
+            const text = themeToggle.querySelector('.theme-toggle-text'); 
+            if (theme === 'dark') {
+                icon.textContent = '☀️';
+                text.textContent = 'Светлая тема';
+            } else {
+                icon.textContent = '🌙';
+                text.textContent = 'Тёмная тема';
+            }
+        }
+    }
+});
+</script>
 </body>
 </html>

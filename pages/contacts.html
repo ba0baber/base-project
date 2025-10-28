@@ -55,12 +55,12 @@
                     
                     <div class="form-group">
                         <label for="message">Сообщение:</label>
-                        <textarea id="message" name="message" required placeholder="Введите ваше сообщение" rows="5"></textarea>
+                        <textarea id="message" name="message" required placeholder="Введите ваше сообщение" rows="5" style="resize: none;"></textarea>
                     </div>
                     
                     <div class="form-buttons">
                         <button type="submit" class="submit-button">Отправить сообщение</button>
-                        <button type="button" class="cancel-button">Отмена</button>
+                        <button type="button" class="cancel-button" id="cancelButton">Отмена</button>
                     </div>
                 </form>
             </div>
@@ -104,6 +104,74 @@
     </footer>
 </div>
 
-<script src="../scrip.js"></script>
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const contactForm = document.getElementById('contactForm');
+    const cancelButton = document.getElementById('cancelButton');
+    
+    if (cancelButton) {
+        cancelButton.addEventListener('click', function() {
+            contactForm.reset();
+        });
+    }
+    
+    if (contactForm) {
+        contactForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const name = document.getElementById('name');
+            const email = document.getElementById('email');
+            const message = document.getElementById('message');
+            
+            if (!name.value.trim()) {
+                alert('Пожалуйста, введите ваше имя');
+                name.focus();
+                return false;
+            }  
+            if (!email.value.trim() || !email.value.includes('@')) {
+                alert('Пожалуйста, введите корректный email');
+                email.focus();
+                return false;
+            }
+            if (!message.value.trim()) {
+                alert('Пожалуйста, введите сообщение');
+                message.focus();
+                return false;
+            }
+            
+            alert('Сообщение отправлено!');
+            contactForm.reset();
+            return false; 
+        });
+    }
+    
+    const themeToggle = document.getElementById('themeToggle');
+    if (themeToggle) {
+        const savedTheme = localStorage.getItem('theme') || 'light';
+        document.body.setAttribute('data-theme', savedTheme);
+        updateThemeToggle(savedTheme);
+        
+        themeToggle.addEventListener('click', function() {
+            const currentTheme = document.body.getAttribute('data-theme');
+            const newTheme = currentTheme === 'light' ? 'dark' : 'light';
+            document.body.setAttribute('data-theme', newTheme);
+            localStorage.setItem('theme', newTheme);
+            updateThemeToggle(newTheme);
+        });
+        
+        function updateThemeToggle(theme) {
+            const icon = themeToggle.querySelector('.theme-toggle-icon');
+            const text = themeToggle.querySelector('.theme-toggle-text'); 
+            if (theme === 'dark') {
+                icon.textContent = '☀️';
+                text.textContent = 'Светлая тема';
+            } else {
+                icon.textContent = '🌙';
+                text.textContent = 'Тёмная тема';
+            }
+        }
+    }
+});
+</script>
 </body>
 </html>

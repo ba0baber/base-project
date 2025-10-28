@@ -183,6 +183,70 @@
     </footer>
 </div>
 
-<script src="scrip.js"></script>
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const downloadBtn = document.getElementById('downloadResume');
+    
+    if (downloadBtn) {
+        downloadBtn.addEventListener('click', function(e) {
+            e.preventDefault();
+            
+            const link = document.createElement('a');
+            link.href = 'assets/resume.pdf';
+            link.download = 'Резюме_Есина_Варвара.pdf';
+            
+            fetch(link.href)
+                .then(response => {
+                    if (response.ok) {
+                        document.body.appendChild(link);
+                        link.click();
+                        document.body.removeChild(link);
+                        alert('Резюме скачивается...');
+                    } else {
+                        alert('Файл резюме не найден. Пожалуйста, свяжитесь со мной для получения резюме.');
+                    }
+                })
+                .catch(error => {
+                    console.error('Ошибка:', error);
+                    try {
+                        document.body.appendChild(link);
+                        link.click();
+                        document.body.removeChild(link);
+                        alert('Резюме скачивается...');
+                    } catch (err) {
+                        alert('Произошла ошибка при скачивании резюме. Пожалуйста, свяжитесь со мной.');
+                    }
+                });
+        });
+    }
+    
+    const themeToggle = document.getElementById('themeToggle');
+    if (themeToggle) {
+        const savedTheme = localStorage.getItem('theme') || 'light';
+        document.body.setAttribute('data-theme', savedTheme);
+        updateThemeToggle(savedTheme);
+        
+        themeToggle.addEventListener('click', function() {
+            const currentTheme = document.body.getAttribute('data-theme');
+            const newTheme = currentTheme === 'light' ? 'dark' : 'light';
+            document.body.setAttribute('data-theme', newTheme);
+            localStorage.setItem('theme', newTheme);
+            updateThemeToggle(newTheme);
+        });
+        
+        function updateThemeToggle(theme) {
+            const icon = themeToggle.querySelector('.theme-toggle-icon');
+            const text = themeToggle.querySelector('.theme-toggle-text'); 
+            if (theme === 'dark') {
+                icon.textContent = '☀️';
+                text.textContent = 'Светлая тема';
+            } else {
+                icon.textContent = '🌙';
+                text.textContent = 'Тёмная тема';
+            }
+        }
+    }
+});
+</script>
 </body>
 </html>
