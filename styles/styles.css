@@ -796,3 +796,89 @@ body {
         font-size: 2rem;
     }
 }
+.form-buttons {
+    display: flex;
+    gap: var(--space-md);
+    margin-top: var(--space-lg);
+}
+
+.cancel-button {
+    background: linear-gradient(45deg, var(--gray), var(--gray-light));
+    color: var(--white);
+    border: none;
+    padding: var(--space-md) var(--space-lg);
+    border-radius: var(--radius);
+    cursor: pointer;
+    font-weight: 600;
+    transition: var(--transition);
+    width: 100%;
+    box-shadow: var(--shadow);
+}
+
+.cancel-button:hover {
+    background: linear-gradient(45deg, var(--gray-light), var(--gray));
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-lg);
+}
+
+.diary-modal-buttons {
+    display: flex;
+    gap: var(--space-md);
+    margin-top: var(--space-lg);
+}
+
+.diary-cancel-button {
+    background: linear-gradient(45deg, var(--gray), var(--gray-light));
+    color: var(--white);
+    border: none;
+    padding: var(--space-md) var(--space-lg);
+    border-radius: var(--radius);
+    cursor: pointer;
+    font-weight: 600;
+    transition: var(--transition);
+    width: 100%;
+    box-shadow: var(--shadow);
+}
+
+.diary-cancel-button:hover {
+    background: linear-gradient(45deg, var(--gray-light), var(--gray));
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-lg);
+}
+
+@media (max-width: 768px) {
+    .form-buttons,
+    .diary-modal-buttons {
+        flex-direction: column;
+    }
+}
+.form-buttons {
+    display: flex;
+    gap: var(--space-md);
+    margin-top: var(--space-lg);
+}
+
+.cancel-button {
+    background: linear-gradient(45deg, var(--gray), var(--gray-light));
+    color: var(--white);
+    border: none;
+    padding: var(--space-md) var(--space-lg);
+    border-radius: var(--radius);
+    cursor: pointer;
+    font-weight: 600;
+    transition: var(--transition);
+    width: 100%;
+    box-shadow: var(--shadow);
+}
+
+.cancel-button:hover {
+    background: linear-gradient(45deg, var(--gray-light), var(--gray));
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-lg);
+}
+
+@media (max-width: 768px) {
+    .form-buttons {
+        flex-direction: column;
+    }
+}
