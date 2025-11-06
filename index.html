@@ -2,11 +2,13 @@
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
     <title>Портфолио - Есина Варвара</title>
     <link rel="stylesheet" href="styles/styles.css">
 </head>
 <body data-theme="light">
+    <a class="skip-link" href="#main">Перейти к основному содержимому</a>
+    
 <div class="page">
 
     <header class="header">
@@ -20,7 +22,7 @@
         </div>
     </header>
 
-    <nav class="nav">
+    <nav class="nav" aria-label="Основная навигация">
         <ul class="nav__list">
             <li class="nav__item nav__item--active">
                 <a class="nav__link" href="index.html">Главная</a>
@@ -37,7 +39,7 @@
         </ul>
     </nav>
 
-    <main class="main">
+    <main class="main" id="main">
 
         <section class="hero">
             <div class="hero__content">
@@ -49,7 +51,13 @@
                     </a>
                 </div>
                 <div class="hero__image">
-                    <img src="image/photo.jpg" alt="Фото Варвары" class="hero__photo" onerror="this.src='https://via.placeholder.com/250x250/9370DB/ffffff?text=Варвара+Есина'">
+                    <img src="image/photo.jpg" 
+                         alt="Фото Варвары Есиной" 
+                         class="hero__photo"
+                         width="250" 
+                         height="250"
+                         loading="eager"
+                         onerror="this.src='https://via.placeholder.com/250x250/9370DB/ffffff?text=Варвара+Есина'">
                 </div>
             </div>
         </section>
@@ -116,7 +124,7 @@
                             <span class="skill-icon">🐍</span>
                             Python
                         </span>
-                        <span class="skill-percent">90%</span>
+                        <span class="skill-percent">60%</span>
                     </div>
                     <div class="skill-bar">
                         <div class="skill-progress" style="width: 60%"></div>
@@ -162,8 +170,8 @@
                 
                 <div class="project-card" onclick="location.href='pages/projects.html'">
                     <h3 class="project-card__title">Простая игрулька</h3>
-                    <p class="project-card__tech">unity, c#</p>
-                    <p>Игрулька была создана просто для изучения unity, мини-шутер</p>
+                    <p class="project-card__tech">Unity, C#</p>
+                    <p>Игрулька была создана просто для изучения Unity, мини-шутер</p>
                 </div> 
                 
                <div class="project-card" onclick="location.href='pages/projects.html'">
