@@ -16,6 +16,31 @@ class ThemeManager {
         this.initDiary();
         this.initContactForm();
         this.initResumeDownload();
+        this.initAccessibility(); 
+    }
+    initAccessibility() {
+        if (!document.querySelector('.skip-link')) {
+            const skipLink = document.createElement('a');
+            skipLink.href = '#main-content';
+            skipLink.className = 'skip-link';
+            skipLink.textContent = 'Перейти к основному содержимому';
+            document.body.insertBefore(skipLink, document.body.firstChild);
+        }
+        const main = document.querySelector('main');
+        if (main && !main.id) {
+            main.id = 'main-content';
+        }
+
+        const nav = document.querySelector('.nav');
+        if (nav && !nav.getAttribute('aria-label')) {
+            nav.setAttribute('aria-label', 'Основная навигация');
+        }
+
+        this.enhanceModalsAccessibility();
+    }
+
+    enhanceModalsAccessibility() {
+
     }
 
     toggleTheme() {
@@ -94,10 +119,18 @@ class ThemeManager {
     showProjectModal(title, tech, description) {
         const modal = document.createElement('div');
         modal.className = 'project-modal';
+
+        modal.setAttribute('role', 'dialog');
+        modal.setAttribute('aria-modal', 'true');
+        modal.setAttribute('aria-labelledby', 'modal-title');
+        
         modal.innerHTML = `
             <div class="modal-content">
-                <span class="close-modal">&times;</span>
-                <h3>${title}</h3>
+                <button class="close-modal" aria-label="Закрыть диалоговое окно">
+                    &times;
+                    <span class="visually-hidden">Закрыть</span>
+                </button>
+                <h3 id="modal-title">${title}</h3>
                 <p class="modal-tech">${tech}</p>
                 <div class="modal-description">
                     <p>${description}</p>
@@ -105,8 +138,14 @@ class ThemeManager {
                         <p><em>Скриншоты проекта будут добавлены позже...</em></p>
                     </div>
                     <div class="modal-links">
-                        <a href="#" class="modal-link">🌐 Живая версия</a>
-                        <a href="#" class="modal-link">💻 Исходный код</a>
+                        <a href="#" class="modal-link" aria-label="Посмотреть живую версию проекта ${title}">
+                            <span aria-hidden="true">🌐</span>
+                            Живая версия
+                        </a>
+                        <a href="#" class="modal-link" aria-label="Посмотреть исходный код проекта ${title}">
+                            <span aria-hidden="true">💻</span>
+                            Исходный код
+                        </a>
                     </div>
                 </div>
             </div>
@@ -114,7 +153,8 @@ class ThemeManager {
         
         document.body.appendChild(modal);
         
-        modal.querySelector('.close-modal').addEventListener('click', () => {
+        const closeBtn = modal.querySelector('.close-modal');
+        closeBtn.addEventListener('click', () => {
             modal.remove();
         });
         
@@ -123,6 +163,13 @@ class ThemeManager {
                 modal.remove();
             }
         });
+        const handleEscape = (e) => {
+            if (e.key === 'Escape') {
+                modal.remove();
+                document.removeEventListener('keydown', handleEscape);
+            }
+        };
+        document.addEventListener('keydown', handleEscape);
     }
 
     initProjectFilters() {
@@ -130,9 +177,16 @@ class ThemeManager {
         const projectCards = document.querySelectorAll('.project-card');
         
         filterButtons.forEach(button => {
+            button.setAttribute('role', 'button');
+            button.setAttribute('aria-pressed', button.classList.contains('filter-button--active') ? 'true' : 'false');
+            
             button.addEventListener('click', () => {
-                filterButtons.forEach(btn => btn.classList.remove('filter-button--active'));
+                filterButtons.forEach(btn => {
+                    btn.classList.remove('filter-button--active');
+                    btn.setAttribute('aria-pressed', 'false');
+                });
                 button.classList.add('filter-button--active');
+                button.setAttribute('aria-pressed', 'true');
                 
                 const filter = button.getAttribute('data-filter');
                 
@@ -141,11 +195,14 @@ class ThemeManager {
                     
                     if (filter === 'all') {
                         card.style.display = 'block';
+                        card.removeAttribute('aria-hidden');
                     } else {
                         if (tech && tech.includes(filter)) {
                             card.style.display = 'block';
+                            card.removeAttribute('aria-hidden');
                         } else {
                             card.style.display = 'none';
+                            card.setAttribute('aria-hidden', 'true');
                         }
                     }
                 });
@@ -163,18 +220,29 @@ class ThemeManager {
     showAddEntryForm() {
         const modal = document.createElement('div');
         modal.className = 'diary-modal';
+        modal.setAttribute('role', 'dialog');
+        modal.setAttribute('aria-modal', 'true');
+        modal.setAttribute('aria-labelledby', 'diary-title');
+        
         modal.innerHTML = `
             <div class="modal-content">
-                <span class="close-modal">&times;</span>
-                <h3>Добавить запись в дневник</h3>
+                <button class="close-modal" aria-label="Закрыть форму добавления записи">
+                    &times;
+                    <span class="visually-hidden">Закрыть</span>
+                </button>
+                <h3 id="diary-title">Добавить запись в дневник</h3>
                 <form id="addEntryForm">
                     <div class="form-group">
                         <label for="entryDate">Дата:</label>
-                        <input type="date" id="entryDate" name="entryDate" required>
+                        <input type="date" id="entryDate" name="entryDate" required
+                               aria-required="true">
                     </div>
                     <div class="form-group">
                         <label for="entryText">Описание:</label>
-                        <textarea id="entryText" name="entryText" required placeholder="Опишите, что вы изучили..." rows="3"></textarea>
+                        <textarea id="entryText" name="entryText" required 
+                                  placeholder="Опишите, что вы изучили..." 
+                                  rows="3"
+                                  aria-required="true"></textarea>
                     </div>
                     <div class="form-group">
                         <label for="entryStatus">Статус:</label>
@@ -211,6 +279,13 @@ class ThemeManager {
             e.preventDefault();
             this.addNewEntry(modal);
         });
+        const handleEscape = (e) => {
+            if (e.key === 'Escape') {
+                modal.remove();
+                document.removeEventListener('keydown', handleEscape);
+            }
+        };
+        document.addEventListener('keydown', handleEscape);
     }
 
     addNewEntry(modal) {
@@ -234,7 +309,9 @@ class ThemeManager {
         newEntry.innerHTML = `
             <span class="entry-date">${formattedDate}</span>
             <span class="entry-text">${text}</span>
-            <span class="entry-status">${this.getStatusIcon(status)}</span>
+            <span class="entry-status" aria-label="Статус: ${this.getStatusText(status)}">
+                ${this.getStatusIcon(status)}
+            </span>
         `;
         
         entriesList.insertBefore(newEntry, entriesList.firstChild);
@@ -254,9 +331,25 @@ class ThemeManager {
         return icons[status] || '○';
     }
 
+    getStatusText(status) {
+        const texts = {
+            completed: 'Завершено',
+            progress: 'В процессе',
+            planned: 'Запланировано'
+        };
+        return texts[status] || 'Неизвестно';
+    }
+
     initContactForm() {
         const contactForm = document.getElementById('contactForm');
         if (contactForm) {
+            const inputs = contactForm.querySelectorAll('input, textarea');
+            inputs.forEach(input => {
+                if (input.hasAttribute('required')) {
+                    input.setAttribute('aria-required', 'true');
+                }
+            });
+
             contactForm.addEventListener('submit', (e) => {
                 e.preventDefault();
                 this.validateContactForm(contactForm);
@@ -299,7 +392,6 @@ class ThemeManager {
 
 document.addEventListener('DOMContentLoaded', function() {
     new ThemeManager();
-   
    
     const animatedElements = document.querySelectorAll('.fade-in-up');
     animatedElements.forEach((element, index) => {
